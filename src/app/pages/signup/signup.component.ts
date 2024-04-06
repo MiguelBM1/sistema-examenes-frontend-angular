@@ -18,7 +18,7 @@ export class SignupComponent {
   private readonly _formBuilder = inject(FormBuilder);
    
   passwordMatcher = new PasswordMatcher();
-  user: IUsuario | null = null;
+  user: IUsuario = Object.create(null);
   userService = inject(UserService);
 
   /*formGroup = this._formBuilder.nonNullable.group({
@@ -47,12 +47,14 @@ export class SignupComponent {
   formSubmit(){
 
     if(this.formGroup.valid){
-      
-    }
-    console.log("Usuario: "+ this.user);
-    if(this.user?.username == '' || this.user?.username == null){
-      alert('El nombre de usuario es requerido');
-      return;
+      this.user = {
+        username: this.formGroup.get('username')!.value,
+        password: this.formGroup.get('password')!.value,
+        email: this.formGroup.get('email')!.value,
+        nombre: this.formGroup.get('nombre')!.value,
+        apellido: this.formGroup.get('apellido')!.value,
+        telefono: this.formGroup.get('telefono')!.value,
+      } 
     }
 
     this.userService.agregarUsuario(this.user).subscribe(

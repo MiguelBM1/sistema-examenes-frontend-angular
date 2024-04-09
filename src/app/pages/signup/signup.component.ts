@@ -7,6 +7,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { PasswordMatcher, crossPasswordMatchingValidator, customPasswordValidator } from './register-custom-validator';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,6 +19,7 @@ import { PasswordMatcher, crossPasswordMatchingValidator, customPasswordValidato
 })
 export class SignupComponent {
   private readonly _formBuilder = inject(FormBuilder);
+  private _snackBar = inject(MatSnackBar);
    
   passwordMatcher = new PasswordMatcher();
   user: IUsuario = Object.create(null);
@@ -45,8 +49,9 @@ export class SignupComponent {
 
 
   formSubmit(){
-
+    
     if(this.formGroup.valid){
+      
       this.user = {
         username: this.formGroup.get('username')!.value,
         password: this.formGroup.get('password')!.value,
@@ -55,16 +60,34 @@ export class SignupComponent {
         apellido: this.formGroup.get('apellido')!.value,
         telefono: this.formGroup.get('telefono')!.value,
       } 
+    }else{
+      this._snackBar.open('Complete todos los campos !!', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
+      return;
     }
 
     this.userService.agregarUsuario(this.user).subscribe(
       (data) => {
         console.log(data);
-        alert('Usuario creado');
+        Swal.fire({
+          title: 'Usuario creado',
+          text: 'El usuario ha sido creado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+
       },
       (error) => {
         console.log(error);
-        alert('Error al crear el usuario');
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al crear el usuario',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     );
     

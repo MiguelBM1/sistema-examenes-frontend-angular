@@ -1,3 +1,45 @@
-<p>
-  login works!
-</p>
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt10 ">
+      <div class="col-md-6 offset-md-3">
+        <mat-card class="mt40">
+          <mat-card-content class="text-center">
+              <img src="../../../assets/login.png" alt="" width="100" height="100">
+          </mat-card-content>
+          <mat-card-title class="text-center"> Inicio de sesion</mat-card-title>
+          
+          <form class="form" action="">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Nombre de Usuario</mat-label>
+              <input
+              required
+                matInput
+                type="text"
+                
+                placeholder="Digite su nombre de usuario"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input
+              required
+              matInput
+                type="password"
+                placeholder="Digite su contraseña"
+              />
+     
+            </mat-form-field>
+
+            <br><br>
+
+            <div class="container text-center mb20">
+                <button mat-raised-button color="primary">Iniciar Sesion</button>
+                <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent">Limpiar</button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,14 +8,15 @@
           </mat-card-content>
           <mat-card-title class="text-center"> Inicio de sesion</mat-card-title>
           
-          <form class="form" action="">
+          <form class="form" (ngSubmit)="formSubmit()">
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Nombre de Usuario</mat-label>
               <input
+              [(ngModel)]="loginData.username"
               required
                 matInput
                 type="text"
-                
+                name="username"
                 placeholder="Digite su nombre de usuario"
               />
             </mat-form-field>
@@ -23,8 +24,10 @@
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Contraseña</mat-label>
               <input
+              [(ngModel)]="loginData.password"
               required
               matInput
+              name="password"
                 type="password"
                 placeholder="Digite su contraseña"
               />

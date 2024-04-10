@@ -41,4 +41,20 @@ body {
     margin-left: 70px !important;
 }
 
+.ml50{
+    margin-left: 50px !important;
+}
+
+
+
+.ml5 { margin-left: 5px !important; }
+
+.mr5 { margin-right: 5px !important; }
+
+.mt5 { margin-top: 5px !important; }
+
+.mb5 { margin-bottom: 5px !important; }
+
+
+
 

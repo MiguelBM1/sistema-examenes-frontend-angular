@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import baseUrl from '../../../services/helper';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  
+  public loginStatusSubject = new Subject<boolean>();
 
   apiUrl = `${baseUrl}`;
   httpClient = inject(HttpClient);
@@ -22,13 +25,18 @@ export class LoginService {
   }
 
   public isLoggedIn() {
-  let tokenStr = localStorage.getItem('token');
-  if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
-    
-    return false;
+    if(typeof localStorage !== 'undefined' ){
+      let tokenStr = localStorage.getItem('token');
+      if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
+        
+        return false;
+        }else{
+          return true;
+        }
     }else{
-      return true;
+      return false;
     }
+ 
   }
   // cerrar cesion eliminar del localStorage
   public logout(){

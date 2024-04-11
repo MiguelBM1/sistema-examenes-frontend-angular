@@ -9,14 +9,19 @@
   </a>
   <span>Portal de exámenes</span>
   <span class="example-spacer"></span>
-   <a
-   [routerLink]="'/login'"
-   mat-icon-button
-   class = "favorite-icon"
-   aria-label = "Example icon-button with heart icon">
-    Iniciar sesion
-  </a>
 
+  @if(!isLoggedIn){
+    <a
+    [routerLink]="'/login'"
+    mat-icon-button
+    class = "favorite-icon"
+    aria-label = "Example icon-button with heart icon">
+     Iniciar sesion
+   </a>
+  } 
+   
+  @if(!isLoggedIn){
+    
   <a
   [routerLink]="'/signup'"
   mat-icon-button
@@ -25,4 +30,24 @@
   >
     Registrar
   </a>
+}
+  @if(isLoggedIn){
+    <a
+    (click)="logout()"
+    mat-icon-button
+    class="favorite-icon mr20 ml40"
+    aria-label="Example icon-button with heart icon"
+    >
+      Cerrar sesion
+      </a>
+  }
+
+  @if(isLoggedIn && user) {
+
+    <a
+    mat-icon-button
+    class="favorite-icon mr10" aria-label="Example icon-button with heart icon">
+      {{user.username}}
+    </a>
+  }
 </mat-toolbar>

@@ -56,13 +56,16 @@ export class LoginService {
   }
 
   public getUser(){
-    let userStr = localStorage.getItem('user');
-    if(userStr != null){
-      return JSON.parse(userStr);
-    }else{
-      this.logout();
-      return null;
+    if(typeof localStorage !== 'undefined' ){
+      let userStr = localStorage.getItem('user');
+      if(userStr != null){
+        return JSON.parse(userStr);
+      }else{
+        this.logout();
+        return null;
+      }
     }
+    
   }
 
   public getUserRole(){

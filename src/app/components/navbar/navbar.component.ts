@@ -3,8 +3,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../pages/login/services/login.service';
-import { MatButtonModule } from '@angular/material/button';
-@Component({
+import {MatListModule} from '@angular/material/list';
+ @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   standalone: true,

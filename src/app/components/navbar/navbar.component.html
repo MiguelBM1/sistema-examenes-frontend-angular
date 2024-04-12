@@ -45,7 +45,7 @@
   @if(isLoggedIn && user) {
 
     <a
-    mat-icon-button
+    mat-icon-button routerLink="/admin/profile"
     class="favorite-icon mr10" aria-label="Example icon-button with heart icon">
       {{user.username}}
     </a>

@@ -17,25 +17,30 @@
                         <table class="table text-center">
                             <tr>
                                 <td>Nombre de usuario</td>
-                                <td>mBeltran</td>
+                                <td>{{user.nombre}} {{user.apellido}}</td>
 
                             </tr>
                             <tr>
                                 <td>ID</td>
-                                <td>123456</td>
+                                <td>{{user.id}}</td>
 
                             </tr>
                             <tr>
                                 <td>telefono</td>
-                                <td>5454564654</td>
+                                <td>{{user.telefono}}</td>
                             </tr>
                             <tr>
                                 <td>rol</td>
-                                <td>Administrador</td>
+                                @if (user.authorities[0].authority === 'ADMIN' ) {
+                                    <td>Administrador</td>
+                                }@else{
+                                    <td>Normal</td>
+                                }
+                                
                             </tr>
                             <tr>
                                 <td>estado</td>
-                                <td>activo</td>
+                                <td>{{user.enabled ? "Activo" : "Inactivo"}}  </td>
                             </tr>
                         </table>
                     </div>

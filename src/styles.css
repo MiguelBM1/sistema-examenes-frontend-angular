@@ -19,6 +19,17 @@ body {
 .mb40 { margin-bottom: 40px !important; }
 
 
+.ml30 { margin-left: 30px !important; }
+
+.mr30 { margin-right: 30px !important; }
+
+.mt30 { margin-top: 30px !important; }
+
+.mb30 { margin-bottom: 30px !important; }
+
+
+
+
 .ml20 { margin-left: 20px !important; }
 
 .mr20 { margin-right: 20px !important; }
@@ -56,5 +67,25 @@ body {
 .mb5 { margin-bottom: 5px !important; }
 
 
+
+.ml25 { margin-left: 25px !important; }
+
+.mr25 { margin-right: 25px !important; }
+
+.mt25 { margin-top: 25px !important; }
+
+.mb25 { margin-bottom: 25px !important; }
+
+
+.ml15 { margin-left: 15px !important; }
+
+.mr15 { margin-right: 15px !important; }
+
+.mt15 { margin-top: 15px !important; }
+
+.mb15 { margin-bottom: 15px !important; }
+
+
+.-mr-13 { margin-right: 13px !important; }
 
 

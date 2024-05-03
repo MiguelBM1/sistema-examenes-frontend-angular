@@ -9,6 +9,8 @@ import { normalGuard } from './services/normal.guard';
 import { adminGuard } from './services/admin.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
+import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
 
 export const routes: Routes = [
     {
@@ -38,6 +40,15 @@ export const routes: Routes = [
             {
                 path: '',
                 component: WelcomeComponent
+            },
+            {
+                path: 'categorias',
+                component: ViewCategoriasComponent
+            }
+            ,
+            {
+                path: 'add-categoria',
+                component: AddCategoriaComponent
             }
         ]
 

@@ -20,4 +20,8 @@ export class AddCategoriaComponent implements OnInit {
   ngOnInit() {
   }
 
+  public formSubmit(){
+    
+  }
+
 }

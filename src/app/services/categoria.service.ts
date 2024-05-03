@@ -12,4 +12,8 @@ public listarCategorias(){
   return this.http.get(`${baseUrl}/categoria/`)
 }
 
+public agregarCategoria(categoria: any){
+    return this.http.post(`${baseUrl}/categoria/`, categoria)
+}
+
 }

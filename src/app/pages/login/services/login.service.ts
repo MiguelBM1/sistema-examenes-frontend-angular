@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import baseUrl from '../../../services/helper';
 import { Subject } from 'rxjs';
-
+import { jwtDecode } from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +31,13 @@ export class LoginService {
         
         return false;
         }else{
-          return true;
+
+          if(this.getTokenExpirationDate() > 0){
+            return true;
+          }else{
+          
+            return false;
+          }
         }
     }else{
       return false;
@@ -78,5 +84,23 @@ export class LoginService {
     return this.httpClient.get(`${this.apiUrl}/actual-usuario`);
   }
 
+  private getDecodeToken(){
+    const token = this.getToken();
+    if (token !== null) {
+        return jwtDecode(token);
+    } else {
+        // Manejar el caso en el que el token es null
+        // Aquí puedes lanzar un error, devolver un valor por defecto o manejarlo de otra manera según sea necesario.
+        throw new Error("No hay token almacenado");
+    }
+
+  }
+
+  private getTokenExpirationDate(){
+    const token = this.getDecodeToken();
+    const ahora = Date.now()/1000;
+    const falta = token.exp !== undefined ? token.exp - ahora : 0;
+    return falta;
+  }
   
 }

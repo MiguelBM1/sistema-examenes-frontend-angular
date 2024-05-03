@@ -15,7 +15,7 @@
               name="titulo"
               matInput
               placeholder="Digite el título de la categoría"
-              
+              [(ngModel)] = "categoria.titulo"
               >
             </mat-form-field>
             <mat-form-field class="w100" appearance="outline">
@@ -25,7 +25,7 @@
               matInput
               placeholder="Digite la descripción de la categoría"
               rows="15"
-              
+              [(ngModel)]= "categoria.descripcion"
               >
               </textarea>
             </mat-form-field>

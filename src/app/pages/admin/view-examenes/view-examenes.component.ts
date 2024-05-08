@@ -32,4 +32,34 @@ export class ViewExamenesComponent implements OnInit {
     )
   }
 
+  eliminarExamen(examenId: any) {
+
+    Swal.fire({
+      title: '¿Estas seguro de eliminar el examen?',
+      text: "No podras revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.examenService.eliminarCuestionario(examenId).subscribe(
+            (data: any) => {
+              Swal.fire(
+                'Eliminado!',
+                'El examen ha sido eliminado.',
+                'success'
+              )
+              this.ngOnInit();
+            },
+            (error: any) => {
+              console.log(error);
+              Swal.fire('Error', 'Ocurrio un error al eliminar el examen', 'error')
+            }
+          )
+        }
+      })
+  }
 }

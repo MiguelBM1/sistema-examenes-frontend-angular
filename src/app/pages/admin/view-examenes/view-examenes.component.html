@@ -12,13 +12,13 @@
     
   </mat-card-header>
   <mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="example-button-row">
       <button mat-flat-button color="primary" routerLink="/admin/add-examen">Preguntas</button>
-      <button mat-stroked-button color="primary" class="ml20">Puntos maximos {{e.puntosMaximos}}</button>
-      <button mat-stroked-button color="primary" class="ml20">Preguntas {{e.numeroDePreguntas}}</button>
-      <button mat-flat-button color="primary" class="ml20">Actualizar</button>
-      <button mat-flat-button color="primary" class="ml20">Intentos</button>
-      
+      <button mat-stroked-button color="primary">Puntos maximos {{e.puntosMaximos}}</button>
+      <button mat-stroked-button color="primary">Preguntas {{e.numeroDePreguntas}}</button>
+      <button mat-flat-button color="primary" [routerLink]="'/admin/examen/'+e.examenId">Actualizar</button>
+      <button mat-flat-button color="primary">Intentos</button>
+      <button mat-flat-button color="warn" (click)="eliminarExamen(e.examenId)">Eliminar</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
@@ -29,4 +29,5 @@
 
 <div class="container text-center mt20">
   <button mat-raised-button color="primary" routerLink="/admin/add-examen" >Agregar Cuestionario</button>
+
 </div>

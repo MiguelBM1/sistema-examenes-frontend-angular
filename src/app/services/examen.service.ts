@@ -14,4 +14,9 @@ public listarCuestionarios(){
 public agregarCuestionario(examen:any){
  return this.http.post(`${baseUrl}/examen/`,examen);
 }
+
+public eliminarCuestionario(examenId:any){
+  return this.http.delete(`${baseUrl}/examen/${examenId}`);
+
+}
 }

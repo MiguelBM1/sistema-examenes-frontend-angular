@@ -2,3 +2,14 @@
     background-image: url('../../../../assets/test.png');
     background-size: cover;
 }
+
+/*reducir tamaño de el texto de los botones cuando se haga mas pequeña la pantalla*/
+ 
+.example-button-row {
+    display: table-cell;
+   
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 20px 8px 0;
+  }

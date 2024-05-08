@@ -7,13 +7,14 @@ import { MatListModule } from '@angular/material/list';
 import { CategoriaService } from '../../../services/categoria.service';
 import Swal from 'sweetalert2';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-view-categorias',
   templateUrl: './view-categorias.component.html',
   styleUrls: ['./view-categorias.component.css'],
   standalone: true,
-  imports: [MatCardModule, MatListModule, MatLine, MatDividerModule, MatButtonModule, MatIconModule]
+  imports: [MatCardModule, MatListModule, MatLine, MatDividerModule, MatButtonModule, MatIconModule, RouterLink]
 
 })
 export class ViewCategoriasComponent implements OnInit{

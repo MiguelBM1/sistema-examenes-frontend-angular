@@ -60,6 +60,26 @@ export class AddExamenComponent implements OnInit {
       return ;
     }
 
+    this.examenService.agregarCuestionario(this.examenData).subscribe(
+      (dato:any) => {
+        console.log(dato);
+        Swal.fire('Exito !!','Cuestionario agregado correctamente','success');
+        this.examenData = {
+          titulo:'',
+          descripcion:'',
+          puntosMaximos:'',
+          numeroDePreguntas:'',
+          activo:true,
+          categoria:{
+            categoriaId:''
+          }
+        }
+        this.router.navigate(['/admin/examenes']);
+      },(error) => {
+        console.log(error);
+        Swal.fire('Error !!','Error al agregar el cuestionario','error');
+      }
+    )
     
   }
 

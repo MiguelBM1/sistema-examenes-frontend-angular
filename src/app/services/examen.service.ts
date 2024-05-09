@@ -19,4 +19,12 @@ public eliminarCuestionario(examenId:any){
   return this.http.delete(`${baseUrl}/examen/${examenId}`);
 
 }
+
+public obtenerExamen(examenId: any){
+  return this.http.get(`${baseUrl}/examen/${examenId}`);
+}
+
+public actualizarExamen(examen:any){
+  return this.http.put(`${baseUrl}/examen/`,examen);
+}
 }

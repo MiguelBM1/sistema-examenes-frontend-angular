@@ -19,6 +19,7 @@
           [(ngModel)] = "examenData.descripcion"
           type="text"
           name="descripcion"
+          required
           placeholder="Digite la descripción"
           matInput
           rows="8"></textarea>
@@ -31,6 +32,7 @@
               <input
               [(ngModel)] = "examenData.puntosMaximos"
               type="text"
+              required
               name="puntosMaximos"
               placeholder="Digite la cantidad de puntos"
               matInput>
@@ -42,6 +44,7 @@
               <input
               [(ngModel)] = "examenData.numeroDePreguntas"
               type="text"
+              required
               name="numeroDePreguntas"
               placeholder="Digite el número de preguntas"
               matInput>

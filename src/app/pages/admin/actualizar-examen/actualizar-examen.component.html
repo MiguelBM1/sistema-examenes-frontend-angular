@@ -1,3 +1,86 @@
-<p>
-  actualizar-examen works!
-</p>
+<mat-card class="mt10 ">
+  <h1 class="ml20 mt10">Actualizar examen</h1>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      @if (examen) {
+
+      
+      <form (submit)="actualizarDatos(examen)">
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Título</mat-label>
+          <input
+          [(ngModel)] = "examen.titulo"
+          type="text"
+          name="titulo"
+          required
+          placeholder="Digite el título"
+          matInput>
+        </mat-form-field>
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea
+          [(ngModel)] = "examen.descripcion"
+          type="text"
+          name="descripcion"
+          required
+          placeholder="Digite la descripción"
+          matInput
+          rows="8"></textarea>
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Puntos máximos</mat-label>
+              <input
+              [(ngModel)] = "examen.puntosMaximos"
+              type="text"
+              name="puntosMaximos"
+              required
+              placeholder="Digite la cantidad de puntos"
+              matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Número de preguntas</mat-label>
+              <input
+              [(ngModel)] = "examen.numeroDePreguntas"
+              type="text"
+              name="numeroDePreguntas"
+              required
+              placeholder="Digite el número de preguntas"
+              matInput>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-slide-toggle class="mt20" name = "activo" [(ngModel)] = "examen.activo" color="primary">
+          Estado de publicación
+        </mat-slide-toggle>
+
+        <mat-form-field appearance="fill" class="mt20 w100">
+          <mat-label>Categorías</mat-label>
+          <mat-select name="categoria" [(ngModel)] = "examen.categoria.categoriaId">
+            @for (c of categorias; track $index) {
+              <mat-option  [value] = "c.categoriaId">
+                {{ c.titulo }}
+              </mat-option>
+            
+            }
+          </mat-select>
+        </mat-form-field>
+        
+
+        <div class="container text-center mb20">
+          <button mat-raised-button color="primary">Guardar</button>
+        </div>
+      </form>
+    } @else {
+      <div class="container text-center">
+        <h2>Examen no encontrado</h2>
+      </div>
+    }
+    </div>
+  </div>
+</mat-card>

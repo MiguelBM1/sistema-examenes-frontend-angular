@@ -15,6 +15,7 @@ import { noAuthGuard } from './services/no-auth.guard';
 import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
 import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
 import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actualizar-examen.component';
+import { ViewExamenPreguntasComponent } from './pages/admin/view-examen-preguntas/view-examen-preguntas.component';
 
 export const routes: Routes = [
     {
@@ -68,6 +69,10 @@ export const routes: Routes = [
             {
                 path: 'examen/:examenId',
                 component: ActualizarExamenComponent
+            },
+            {
+                path: 'ver-preguntas/:examenId/:titulo',
+                component: ViewExamenPreguntasComponent
             }
             
 

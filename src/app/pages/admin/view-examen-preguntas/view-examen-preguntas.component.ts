@@ -3,11 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PreguntaService } from '../../../services/pregunta.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-view-examen-preguntas',
   standalone: true,
-  imports: [RouterLink, MatCardModule, MatDividerModule],
+  imports: [RouterLink, MatCardModule, MatDividerModule,MatButton],
   templateUrl: './view-examen-preguntas.component.html',
   styleUrl: './view-examen-preguntas.component.css'
 })

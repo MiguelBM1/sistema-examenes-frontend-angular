@@ -106,4 +106,27 @@ export class AddPreguntaComponent {
 
   }
 
+  eliminarPregunta(preguntaId: any){
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: 'No podras revertir esta accion',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.__preguntaService.eliminarPregunta(preguntaId).subscribe(
+          (data) => {
+            Swal.fire('Exito', 'Pregunta eliminada', 'success');
+          },(error) => {
+            Swal.fire('Error', 'Error al eliminar la pregunta', 'error');
+          }
+        )
+      }
+    })
+  }
+
 }

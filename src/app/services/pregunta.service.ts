@@ -15,4 +15,8 @@ export class PreguntaService {
   public guardarPregunta(pregunta: any){
     return this.__http.post(`${baseUrl}/pregunta/`, pregunta);
   }
+
+  public eliminarPregunta(preguntaId: any){
+    return this.__http.delete(`${baseUrl}/pregunta/${preguntaId}`);
+  }
 }

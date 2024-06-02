@@ -76,7 +76,7 @@ export const routes: Routes = [
                 component: ViewExamenPreguntasComponent
             },
             {
-                path: 'add-pregunta/:examenId',
+                path: 'add-pregunta/:examenId/:titulo',
                 component: AddPreguntaComponent
             }
             

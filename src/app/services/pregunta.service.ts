@@ -11,4 +11,8 @@ export class PreguntaService {
   public listarPreguntasDelExamen(examenId: any){
     return this.__http.get(`${baseUrl}/pregunta/examen/${examenId}`);
   }
+
+  public guardarPregunta(pregunta: any){
+    return this.__http.post(`${baseUrl}/pregunta/`, pregunta);
+  }
 }

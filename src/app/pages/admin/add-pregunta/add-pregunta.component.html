@@ -1,7 +1,7 @@
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mt10">Agregar nueva pregunta</h1>
+            <h1 class="mt10">Agregar pregunta a <strong>{{titulo}}</strong></h1>
             <mat-card>
                 <mat-card-header>
                     <mat-card-subtitle>
@@ -9,7 +9,7 @@
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <form  class="mt20">
+                    <form  class="mt20" (submit)= "onSubmit()">
                         <mat-form-field class="w100">
                             <mat-label>
                                 Digite el contenido de la pregunta</mat-label>
@@ -22,7 +22,11 @@
                                 <mat-label>
                                     Digite la opcion 1
                                 </mat-label>
-                                <input type="text" matInput>
+                                <input type="text" 
+                                matInput
+                                type="text"
+                                name="opcion1"
+                                [(ngModel)] = "pregunta.opcion1">
                             </mat-form-field>
                             </div>
                             <div class="col-md-6">
@@ -30,7 +34,10 @@
                                 <mat-label>
                                     Digite la opcion 2
                                 </mat-label>
-                                <input type="text" matInput>
+                                <input type="text" matInput
+                                type="text"
+                                name="opcion2"
+                                [(ngModel)] = "pregunta.opcion2">
                             </mat-form-field>
                             </div>
                         </div>
@@ -40,7 +47,10 @@
                                 <mat-label>
                                     Digite la opcion 3
                                 </mat-label>
-                                <input type="text" matInput>
+                                <input type="text" matInput
+                                type="text"
+                                name="opcion3"
+                                [(ngModel)] = "pregunta.opcion3">
                             </mat-form-field>
                             </div>
                             <div class="col-md-6">
@@ -48,7 +58,10 @@
                                 <mat-label>
                                     Digite la opcion 4
                                 </mat-label>
-                                <input type="text" matInput>
+                                <input type="text" matInput
+                                type="text"
+                                name="opcion4"
+                                [(ngModel)] = "pregunta.opcion4">
                             </mat-form-field>
                             </div>
                         </div>
@@ -57,11 +70,19 @@
                             <mat-label>
                                 Seleccione la respuesta
                             </mat-label>
-                            <mat-select>
-                                <mat-option>Opcion 1</mat-option>
-                                <mat-option>Opcion 2</mat-option>
-                                <mat-option>Opcion 3</mat-option>
-                                <mat-option>Opcion 4</mat-option>
+                            <mat-select [(ngModel)] = "pregunta.respuesta" name="respuesta">
+                               @if (pregunta.opcion1){
+                                <mat-option [value]="pregunta.opcion1">{{pregunta.opcion1}}</mat-option>
+                               }
+                               @if (pregunta.opcion2){
+                                <mat-option [value]="pregunta.opcion2">{{pregunta.opcion2}}</mat-option>
+                               }
+                               @if (pregunta.opcion3){
+                                <mat-option [value]="pregunta.opcion3">{{pregunta.opcion3}}</mat-option>
+                               }
+                               @if (pregunta.opcion4){
+                                <mat-option [value]="pregunta.opcion4">{{pregunta.opcion4}}</mat-option>
+                               }
                             </mat-select>
                         </mat-form-field>
 

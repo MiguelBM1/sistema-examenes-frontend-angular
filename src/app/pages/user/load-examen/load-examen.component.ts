@@ -2,11 +2,13 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExamenService } from '../../../services/examen.service';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-load-examen',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatButtonModule, MatDivider],
   templateUrl: './load-examen.component.html',
   styleUrl: './load-examen.component.css'
 })

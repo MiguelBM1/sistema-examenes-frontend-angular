@@ -1,0 +1,13 @@
+.header-image{
+    background-image: url('/assets/exam.png');
+    background-size: cover;
+}
+
+.example-button-row {
+    display: table-cell;
+   
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 20px 8px 0;
+  }

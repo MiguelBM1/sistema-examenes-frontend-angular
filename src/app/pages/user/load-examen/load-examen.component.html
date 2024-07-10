@@ -1,19 +1,34 @@
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
-        <h1>examenes disponibles</h1>
+        <h1 class="mt20">examenes disponibles</h1>
         @if (examenes) {
             <div class="row mt20">
                 @for (examen of examenes; track $index) {
                     <div class="col-md-4">
                         <mat-card class="mb20">
                         <mat-card-header>
-                            <mat-card-subtitle>
+                            <div mat-card-avatar class="header-image">
+
+                            </div>
+                            <mat-card-title>
+                                {{ examen.titulo }}
+                            </mat-card-title>
+                            <mat-card-subtitle class="mb10">
                              {{ examen.categoria.titulo }}
                             </mat-card-subtitle>
                         </mat-card-header>
-                        <mat-card-content>
-                            <h1>{{ examen.titulo }}</h1>
+                        <mat-card-content >
+                            <p>{{examen.descripcion}}</p>
+                            <mat-divider></mat-divider>
+                            <p class="mt10">Preguntas: {{examen.numeroDePreguntas}}</p>
+                            <p class="">P.M: {{examen.puntosMaximos}}</p>
                         </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button mat-button color="primary">Ver</button>
+                            <button mat-button color="accent">Empezar</button>
+
+                            
+                        </mat-card-actions>
                         </mat-card>
                     </div>
                 }

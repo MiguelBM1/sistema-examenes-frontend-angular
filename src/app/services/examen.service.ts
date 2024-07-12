@@ -27,4 +27,16 @@ public obtenerExamen(examenId: any){
 public actualizarExamen(examen:any){
   return this.http.put(`${baseUrl}/examen/`,examen);
 }
+
+public listarExamenesPorCategoria(catId:any){
+  return this.http.get(`${baseUrl}/examen/categoria/${catId}`);
+}
+
+public obtenerExamenesActivos(){
+  return this.http.get(`${baseUrl}/examen/activo`);
+}
+
+public obtenerExamenesActivosPorCategoria(catId:any){
+  return this.http.get(`${baseUrl}/examen/categoria/activo/${catId}`);
+}
 }

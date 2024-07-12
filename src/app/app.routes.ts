@@ -20,11 +20,12 @@ import { AddPreguntaComponent } from './pages/admin/add-pregunta/add-pregunta.co
 import { ActualizarPreguntaComponent } from './pages/admin/actualizar-pregunta/actualizar-pregunta.component';
 import { LoadExamenComponent } from './pages/user/load-examen/load-examen.component';
 import { InstruccionesComponent } from './pages/user/instrucciones/instrucciones.component';
+import { StartComponent } from './pages/user/start/start.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component:HomeComponent,
+        component: HomeComponent,
         pathMatch: 'full'
     },
     {
@@ -86,7 +87,7 @@ export const routes: Routes = [
                 path: 'actualizar-pregunta/:preguntaId',
                 component: ActualizarPreguntaComponent
             }
-            
+
 
         ]
 
@@ -104,9 +105,14 @@ export const routes: Routes = [
                 path: 'instrucciones/:examenId',
                 component: InstruccionesComponent
             }
-                
+
         ]
+    },
+    {
+        path: 'start/:examenId',
+        component: StartComponent,
+        canActivate: [normalGuard]
     }
 
-        
+
 ];

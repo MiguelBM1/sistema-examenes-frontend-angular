@@ -27,4 +27,8 @@ export class PreguntaService {
   public actualizarPregunta(pregunta: any){
     return this.__http.put(`${baseUrl}/pregunta/`, pregunta);
   }
+
+  public listarPreguntasPrueba(examenId: any){
+    return this.__http.get(`${baseUrl}/pregunta/examen/todos/${examenId}`);
+  }
 }

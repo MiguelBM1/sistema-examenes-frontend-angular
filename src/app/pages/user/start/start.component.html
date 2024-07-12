@@ -1,0 +1,104 @@
+@if (!esEnviado) {
+
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h3>Instrucciones</h3>
+      </div>
+      <div class="col-md-8">
+        @if (preguntas) {
+        <ng-container>
+          <h1 class="mt20">
+            En curso <b>{{ preguntas[0].examen.titulo }}</b>
+          </h1>
+        </ng-container>
+
+        @for (p of preguntas; track $index) {
+        <mat-card class="mb20">
+          <mat-card-content>
+            <p>
+              <b>{{ $index + 1 }}) </b> {{ p.contenido }}
+            </p>
+            <mat-divider></mat-divider>
+            <div class="mt20">
+              <div class="col-md-12 mt10">
+                <input
+                  [(ngModel)]="p.respuestaDada"
+                  type="radio"
+                  [value]="p.opcion1"
+                  name="{{ $index }}"
+                />{{ p.opcion1 }}
+              </div>
+              <div class="col-md-12 mt10">
+                <input
+                  [(ngModel)]="p.respuestaDada"
+                  type="radio"
+                  [value]="p.opcion2"
+                  name="{{ $index }}"
+                />{{ p.opcion2 }}
+              </div>
+              <div class="col-md-12 mt10">
+                <input
+                  [(ngModel)]="p.respuestaDada"
+                  type="radio"
+                  [value]="p.opcion3"
+                  name="{{ $index }}"
+                />{{ p.opcion3 }}
+              </div>
+              <div class="col-md-12 mt10">
+                <input
+                  [(ngModel)]="p.respuestaDada"
+                  type="radio"
+                  [value]="p.opcion4"
+                  name="{{ $index }}"
+                />{{ p.opcion4 }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6"></div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        }
+        <div class="container text-center mt20 mb20">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="enviarCuestionario()"
+          >
+            Enviar cuestionario
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+} @if (esEnviado) {
+<div class="bootstrap-wrapper">
+  <div class="row mt20">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Resultado de la prueba
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center mt10">
+            <h1>Puntos conseguidos: <b>{{puntosConseguidos}}</b></h1>
+            <h1>Respuestas correctas: <b>{{respuestasCorrectas}}</b></h1>
+
+        </mat-card-content>
+
+        <div class="text-center mt20 mb20">
+            <button mat-raised-button color="primary" > Imprimir</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+}

@@ -1,14 +1,18 @@
 <mat-card>
   <mat-action-list>
-    <div mat-subheader>Menu</div>
-    <button routerLink="/user-dashboard" mat-list-item>
-      <mat-icon mat-list-icon class="vertical-align-center">home</mat-icon> Inicio </button>
-    <button  mat-list-item>
-      <mat-icon mat-list-icon class="vertical-align-center">quiz</mat-icon> Examenes </button>
+    <div mat-subheader>Categorias disponibles</div>
+    
+    <button routerLink="/user-dashboard/0" mat-list-item>
+      <mat-icon mat-list-icon class="vertical-align-center">quiz</mat-icon>
+      Todos los Examenes
+    </button>
     @for (categoria of categorias; track $index) {
-      <button mat-list-item >
-        <mat-icon mat-list-icon class="vertical-align-center">account_circle</mat-icon> {{categoria.titulo}} </button>
+    <button mat-list-item [routerLink]="'/user-dashboard/'+categoria.categoriaId" mat-list-item >
+      <mat-icon mat-list-icon class="vertical-align-center"
+        >account_circle</mat-icon
+      >
+      {{ categoria.titulo }}
+    </button>
     }
-
   </mat-action-list>
 </mat-card>

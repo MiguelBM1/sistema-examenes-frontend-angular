@@ -6,7 +6,7 @@
       <div class="col-md-2">
         <h3>Instrucciones</h3>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         @if (preguntas) {
         <ng-container>
           <h1 class="mt20">
@@ -75,9 +75,34 @@
         </div>
         }
       </div>
+
+      <div class="col-md-3">
+        <mat-card style="margin-top: 70px;">
+          <mat-card-header>
+            <mat-card-title>
+              Temporizador
+            </mat-card-title>
+            <mat-card-subtitle>
+              El cuestionario se enviara automaticamente cuando el temporizador llegue a 0:0
+            </mat-card-subtitle>
+          
+          </mat-card-header>
+            <mat-card-content>
+              <h1 class="text-center">
+                  {{obtenerHoraFormateada()}}
+              </h1>
+              <mat-spinner mode="determinate" style="margin:auto" [value]="(timer/(this.preguntas.length*2*60)*100)">
+
+              </mat-spinner>
+            </mat-card-content>
+        </mat-card>
+      </div>
+
+
     </div>
   </div>
 </div>
+
 } @if (esEnviado) {
 <div class="bootstrap-wrapper">
   <div class="row mt20">
@@ -96,6 +121,7 @@
 
         <div class="text-center mt20 mb20">
             <button mat-raised-button color="primary" > Imprimir</button>
+            <button mat-raised-button color="accent" [routerLink]="'/user-dashboard/0'" class="ml10">Inicio</button>
         </div>
       </mat-card>
     </div>

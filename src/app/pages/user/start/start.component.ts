@@ -1,17 +1,17 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PreguntaService } from '../../../services/pregunta.service';
 import Swal from 'sweetalert2';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-start',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatDividerModule, FormsModule],
+  imports: [RouterLink, MatCardModule, MatButtonModule, MatDividerModule,MatProgressSpinnerModule, FormsModule],
   templateUrl: './start.component.html',
   styleUrl: './start.component.css'
 })
@@ -26,6 +26,7 @@ export class StartComponent implements OnInit {
   puntosConseguidos = 0;
   respuestasCorrectas = 0;
   intentos = 0;
+  timer: any
 
   esEnviado=false;
 
@@ -42,12 +43,14 @@ export class StartComponent implements OnInit {
       (data: any) => {
         this.preguntas = data;
 
+        this.timer = this.preguntas.length *2 *60;
         this.preguntas.forEach((pregunta: any) => {
           pregunta.respuestaDada = '';
  
         }
         );
         console.log(this.preguntas);
+        this.iniciarTemporizador();
       },
       (error) => {
         Swal.fire('Error', 'No se pudieron cargar las preguntas', 'error');
@@ -74,25 +77,47 @@ export class StartComponent implements OnInit {
       icon: 'warning'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.esEnviado = true;
-        this.preguntas.forEach((pregunta: any) => {
-          if (pregunta.respuestaDada == pregunta.respuesta) {
-            this.respuestasCorrectas++;
-            let puntos = this.preguntas[0].examen.puntosMaximos/this.preguntas.length;
-            this.puntosConseguidos += puntos;
-
-          }
-          if (pregunta.respuestaDada.trim() != '') {
-            
-            this.intentos++;
-          }
-        })
-
-        console.log('Respuestas correctas: ' + this.respuestasCorrectas);
-        console.log('Puntos conseguidos: ' + this.puntosConseguidos);
-        console.log('Intentos: ' + this.intentos);
-        
+        this.evaluarExamen();
       }
     })
+  }
+
+  iniciarTemporizador(){
+    let t = window.setInterval(() => {
+      if(this.timer <=0){
+        this.evaluarExamen();
+        clearInterval(t);
+      }else{
+        this.timer--;
+      }
+    },1000)
+  }
+
+  obtenerHoraFormateada(){
+  
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer % 60;
+    return `${mm} min : ${ss} seg`;
+  }
+
+  evaluarExamen(){
+    this.esEnviado = true;
+    this.preguntas.forEach((pregunta: any) => {
+      if (pregunta.respuestaDada == pregunta.respuesta) {
+        this.respuestasCorrectas++;
+        let puntos = this.preguntas[0].examen.puntosMaximos/this.preguntas.length;
+        this.puntosConseguidos += puntos;
+
+      }
+      if (pregunta.respuestaDada.trim() != '') {
+        
+        this.intentos++;
+      }
+    })
+
+    console.log('Respuestas correctas: ' + this.respuestasCorrectas);
+    console.log('Puntos conseguidos: ' + this.puntosConseguidos);
+    console.log('Intentos: ' + this.intentos);
+    
   }
 }

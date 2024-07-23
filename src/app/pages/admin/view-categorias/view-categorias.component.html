@@ -1,23 +1,32 @@
 <mat-card class="mt10">
   <mat-card-content>
     <mat-list>
-      <h3>
-        Todas las categorias
-      </h3>
-      @for (c of categorias; track $index) {  
-      <mat-list-item >
-          <mat-icon matListItemIcon class="mt25 -mr-13">category</mat-icon>
-          <span matListItemTitle>{{c.titulo}}</span>
-          <span matListItemLine>{{c.descripcion}}</span>
-          
-      </mat-list-item>
+      <h3>Todas las categorias</h3>
+      @for (c of categorias; track $index) {
+      <div class="row">
+        <div class="col-md-10">
+          <mat-list-item>
+            <mat-icon matListItemIcon class="mt25 -mr-13">category</mat-icon>
+            <span matListItemTitle>{{ c.titulo }}</span>
+            <span matListItemLine>{{ c.descripcion }}</span>
+          </mat-list-item>
+        </div>
+        <div class="col-md-2 vertical-align-center">
+          <span><button mat-button color="accent" (click)="eliminarCategoria(c.categoriaId)">Eliminar</button></span>
+        </div>
+      </div>
       <mat-divider></mat-divider>
-    }
+      }
     </mat-list>
 
     <div class="container text-center mt20">
-      <button routerLink="/admin/add-categoria" mat-raised-button color="primary"> Agregar categoria</button>
+      <button
+        routerLink="/admin/add-categoria"
+        mat-raised-button
+        color="primary"
+      >
+        Agregar categoria
+      </button>
     </div>
-  
   </mat-card-content>
-  </mat-card>
+</mat-card>

@@ -1,10 +1,21 @@
 @if (!esEnviado) {
 
 <div class="bootstrap-wrapper">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-        <h3>Instrucciones</h3>
+        <mat-card style="margin-top: 70px;">
+            <mat-card-content>
+              <h3><b>Instrucciones</b></h3>
+              <ul>
+                <li>
+                  No actualize la pagina de lo contrario obtendra nuevas preguntas en este cuestionario
+                </li>
+                <li>No cambies las pestañas</li>
+                <li>No minimizes la ventana</li>
+              </ul>
+            </mat-card-content>
+        </mat-card>
       </div>
       <div class="col-md-7">
         @if (preguntas) {
@@ -105,7 +116,7 @@
 
 } @if (esEnviado) {
 <div class="bootstrap-wrapper">
-  <div class="row mt20">
+  <div class="container mt20">
     <div class="col-md-6 offset-md-3">
       <mat-card>
         <mat-card-header>
@@ -120,7 +131,7 @@
         </mat-card-content>
 
         <div class="text-center mt20 mb20">
-            <button mat-raised-button color="primary" > Imprimir</button>
+            <button mat-raised-button color="primary" (click)="imprimirPagina()"> Imprimir</button>
             <button mat-raised-button color="accent" [routerLink]="'/user-dashboard/0'" class="ml10">Inicio</button>
         </div>
       </mat-card>

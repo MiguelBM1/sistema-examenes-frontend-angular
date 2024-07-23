@@ -31,4 +31,8 @@ export class PreguntaService {
   public listarPreguntasPrueba(examenId: any){
     return this.__http.get(`${baseUrl}/pregunta/examen/todos/${examenId}`);
   }
+
+  public evaluarExamen(preguntas: any){
+    return this.__http.post(`${baseUrl}/pregunta/evaluar-examen`, preguntas);
+  }
 }

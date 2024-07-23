@@ -16,4 +16,8 @@ public agregarCategoria(categoria: any){
     return this.http.post(`${baseUrl}/categoria/`, categoria)
 }
 
+public eliminarCategoria(id: number){
+  return this.http.delete(`${baseUrl}/categoria/${id}`)
+}
+
 }

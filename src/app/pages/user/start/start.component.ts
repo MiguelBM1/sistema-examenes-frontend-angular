@@ -101,7 +101,22 @@ export class StartComponent implements OnInit {
   }
 
   evaluarExamen(){
-    this.esEnviado = true;
+    this.preguntaService.evaluarExamen(this.preguntas).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.esEnviado = true;
+        this.respuestasCorrectas = data.respuestasCorrectas;
+        this.puntosConseguidos = data.puntosMaximos;
+        this.intentos = data.intentos;
+      },
+      (error) => {
+        Swal.fire('Error', 'No se pudo evaluar el examen', 'error');
+        console.log(error);
+      }
+    )
+
+
+   /* this.esEnviado = true;
     this.preguntas.forEach((pregunta: any) => {
       if (pregunta.respuestaDada == pregunta.respuesta) {
         this.respuestasCorrectas++;
@@ -118,6 +133,10 @@ export class StartComponent implements OnInit {
     console.log('Respuestas correctas: ' + this.respuestasCorrectas);
     console.log('Puntos conseguidos: ' + this.puntosConseguidos);
     console.log('Intentos: ' + this.intentos);
-    
+    */
+  }
+
+  imprimirPagina(){
+    window.print();
   }
 }

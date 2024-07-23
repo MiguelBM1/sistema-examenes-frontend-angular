@@ -11,37 +11,29 @@
         >account_circle</mat-icon
       >
       <span class="vertical-align-center"> Perfil </span>
-    
     </button>
     <button mat-list-item routerLink="/admin/categorias">
       <mat-icon class="vertical-align-center" mat-list-icon>list</mat-icon>
       <span class="vertical-align-center"> Categorias </span>
     </button>
     <button mat-list-item routerLink="/admin/add-categoria">
-      <mat-icon class="vertical-align-center" mat-list-icon>add_circle_outline</mat-icon>
+      <mat-icon class="vertical-align-center" mat-list-icon
+        >add_circle_outline</mat-icon
+      >
       <span class="vertical-align-center"> Agregar categoria </span>
     </button>
-    <button  mat-list-item routerLink="/admin/examenes">
+    <button mat-list-item routerLink="/admin/examenes">
       <mat-icon class="vertical-align-center" mat-list-icon>quiz</mat-icon>
-      <span class="vertical-align-center">
-        Cuestionario
-        </span>
-        </button>
-        <button  mat-list-item routerLink="/admin/add-examen">
-          <mat-icon class="vertical-align-center" mat-list-icon>add</mat-icon>
-          <span class="vertical-align-center">
-            Agregar cuestionario
-            </span>
-            </button>
+      <span class="vertical-align-center"> Cuestionario </span>
+    </button>
+    <button mat-list-item routerLink="/admin/add-examen">
+      <mat-icon class="vertical-align-center" mat-list-icon>add</mat-icon>
+      <span class="vertical-align-center"> Agregar cuestionario </span>
+    </button>
 
-            <button  mat-list-item routerLink="/admin/users">
-              <mat-icon class="vertical-align-center" mat-list-icon>logout</mat-icon>
-              <span class="vertical-align-center">
-                Salir
-                </span>
-                </button>
-                
-            
-        
+    <button mat-list-item (click)="logout()">
+      <mat-icon class="vertical-align-center" mat-list-icon>logout</mat-icon>
+      <span class="vertical-align-center"> Salir </span>
+    </button>
   </mat-action-list>
 </mat-card>

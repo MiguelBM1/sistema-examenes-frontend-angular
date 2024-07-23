@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './view-categorias.component.html',
   styleUrls: ['./view-categorias.component.css'],
   standalone: true,
-  imports: [MatCardModule, MatListModule, MatLine, MatDividerModule, MatButtonModule, MatIconModule, RouterLink]
+  imports: [MatCardModule, MatListModule, MatLine, MatDividerModule, MatButtonModule, MatIconModule, RouterLink, MatButtonModule]
 
 })
 export class ViewCategoriasComponent implements OnInit{
@@ -27,6 +27,10 @@ export class ViewCategoriasComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.listarCategorias();
+  }
+
+  listarCategorias(){
     this.categoriaService.listarCategorias().subscribe(
       (dato:any)=>{
         this.categorias = dato;
@@ -37,6 +41,31 @@ export class ViewCategoriasComponent implements OnInit{
         Swal.fire('Error !!', 'Error al cargar las categorias', 'error');
       }
     )
+  }
+
+  eliminarCategoria(id:any){
+    Swal.fire({
+      title: '¿Estas seguro de eliminar la categoria?',
+      text: 'Una vez eliminada no se podra recuperar',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if(result.value){
+        this.categoriaService.eliminarCategoria(id).subscribe(
+          (dato:any)=>{
+            Swal.fire('Exito !!', 'Categoria eliminada correctamente', 'success');
+            this.listarCategorias();
+          },
+          (error)=>{
+            console.log(error);
+            Swal.fire('Error !!', 'Error al eliminar la categoria', 'error');
+          }
+        )
+      }
+    })
+  
   }
 
 }
